@@ -2,6 +2,7 @@ package rikkei.academy.view;
 
 import rikkei.academy.Config.Config;
 import rikkei.academy.view.singer.ViewSinger;
+import rikkei.academy.view.singer.ViewSong;
 
 public class Main {
     public Main(){
@@ -13,6 +14,10 @@ public class Main {
             case 1:
                 new ViewSinger();
                 break;
+            case 2:
+                new ViewSong();
+                break;
+
 
         }
     }

@@ -1,5 +1,6 @@
 package rikkei.academy.service.singer;
 
+import rikkei.academy.Config.Config;
 import rikkei.academy.model.Singer;
 
 import java.util.ArrayList;
@@ -7,14 +8,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class SingerServiceIMPL implements ISingerService{
-    public static List<Singer> singerList = new ArrayList<>();
-    static {
-        singerList.add(new Singer(1,"Chinh",21));
-        singerList.add(new Singer(2,"Chim se",27));
-        singerList.add(new Singer(3,"Nam ok",24));
-    }
+    public static final String PATH_SINGER = "C:\\Users\\Chinh\\IdeaProjects\\untitled15\\src\\rikkei\\academy\\database\\singer.txt";
+    public static List<Singer> singerList = new Config<Singer>().readFile(PATH_SINGER);
     @Override
     public List<Singer> findAll() {
+        new Config<Singer>().writeFile(PATH_SINGER,singerList);
         return singerList;
     }
 

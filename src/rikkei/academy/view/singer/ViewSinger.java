@@ -58,7 +58,8 @@ public class ViewSinger {
             Singer singer = new Singer(idSinger, name, age);
             singerController.createSinger(singer);
             System.out.println("Create success!");
-            System.out.println("Check List---->" + singerController.showListSinger());
+//            System.out.println("Check List---->" + singerController.showListSinger());
+            singerController.showListSinger();
             System.out.println("nhap vao phim bat ki de tiep tuc - nhap vao quit de thoat: ");
             String backMenu = Config.scanner().nextLine();
             if (backMenu.equalsIgnoreCase("Quit")) {
@@ -106,17 +107,18 @@ public class ViewSinger {
             System.out.println("OLD AGE: "+singer.getAge());
             System.out.println("nhap vao ten de sua: ");
             String newName = Config.scanner().nextLine();
-            if (newName.trim().equals(" ")){
+            if (newName.trim().equals("")){
                 newName = singer.getName();
             }
+            System.out.println("nhap vao tuoi de sua: ");
             String newAge = Config.scanner().nextLine();
-            if (newAge.trim().equals(" ")){
+            if (newAge.trim().equals("")){
                 newAge = String.valueOf(singer.getAge());
             }
-            System.out.println("nhap vao tuoi de sua: ");
             Singer newSinger = new Singer(newName,newAge);
             singerController.updateSinger(idSinger,newSinger);
             System.out.println("Edit success!!");
+            singerController.showListSinger();
         }
         System.out.println("nhap vao phim bat ki de tiep tuc - nhap vao quit de thoat: ");
         String backMenu = Config.scanner().nextLine();
@@ -136,6 +138,7 @@ public class ViewSinger {
                 case 1:
                     singerController.deleteSinger(idSinger);
                     fromShowListSinger();
+                    singerController.showListSinger();
                     break;
                 case 2:
                     new ViewSinger();
